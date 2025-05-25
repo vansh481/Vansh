@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spend a Billionaire's Money</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    #money {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .item {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 220px;
+    }
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+    .item p {
+      margin: 0.5rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .count {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Spend a Billionaire's Money 💸</h1>
+  <div id="money">$1,000,000,000</div>
+
+  <div class="items" id="items-container"></div>
+
+  <script>
+    let money = 1000000000;
+    const moneyDisplay = document.getElementById("money");
+    const itemsContainer = document.getElementById("items-container");
+
+    const items = [
+      { name: "Burger 🍔", price: 5, img: "https://img.icons8.com/color/96/hamburger.png" },
+      { name: "Coffee ☕", price: 3, img: "https://img.icons8.com/color/96/coffee-to-go.png" },
+      { name: "Smartphone 📱", price: 1000, img: "https://img.icons8.com/color/96/smartphone.png" },
+      { name: "Laptop 💻", price: 2000, img: "https://img.icons8.com/color/96/laptop.png" },
+      { name: "Car 🚗", price: 30000, img: "https://img.icons8.com/color/96/car.png" },
+      { name: "Motorcycle 🏍️", price: 15000, img: "https://img.icons8.com/color/96/motorcycle.png" },
+      { name: "Mansion 🏠", price: 10000000, img: "https://img.icons8.com/color/96/cottage.png" },
+      { name: "Private Jet ✈️", price: 50000000, img: "https://img.icons8.com/color/96/private-plane.png" },
+      { name: "Yacht 🚢", price: 100000000, img: "https://img.icons8.com/color/96/yacht.png" },
+      { name: "Island 🏝️", price: 150000000, img: "https://img.icons8.com/color/96/island-on-water.png" },
+      { name: "NBA Team 🏀", price: 300000000, img: "https://img.icons8.com/color/96/basketball.png" },
+      { name: "Space Rocket 🚀", price: 90000000, img: "https://img.icons8.com/color/96/rocket.png" },
+      { name: "NFT 🖼️", price: 1000000, img: "https://img.icons8.com/color/96/blockchain-technology.png" },
+      { name: "Twitter 🐦", price: 44000000000, img: "https://img.icons8.com/color/96/twitter.png" },
+    ];
+
+    items.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <p><strong>${item.name}</strong></p>
+        <p>$${item.price.toLocaleString()}</p>
+        <button onclick="buy(${index})">Buy</button>
+        <p class="count" id="count-${index}">Bought: 0</p>
+      `;
+      itemsContainer.appendChild(div);
+    });
+
+    const counts = Array(items.length).fill(0);
+
+    function buy(index) {
+      if (money >= items[index].price) {
+        money -= items[index].price;
+        counts[index]++;
+        document.getElementById(`count-${index}`).textContent = `Bought: ${counts[index]}`;
+        moneyDisplay.textContent = "$" + money.toLocaleString();
+      } else {
+        alert("Not enough money!");
+      }
+    }
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spend a Billionaire's Money</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    #money {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .item {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 220px;
+    }
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+    .item p {
+      margin: 0.5rem 0;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .count {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Spend a Billionaire's Money 💸</h1>
+  <div id="money">$1,000,000,000</div>
+
+  <div class="items" id="items-container"></div>
+
+  <script>
+    let money = 1000000000;
+    const moneyDisplay = document.getElementById("money");
+    const itemsContainer = document.getElementById("items-container");
+
+    const items = [
+      { name: "Burger 🍔", price: 5, img: "https://img.icons8.com/color/96/hamburger.png" },
+      { name: "Coffee ☕", price: 3, img: "https://img.icons8.com/color/96/coffee-to-go.png" },
+      { name: "Smartphone 📱", price: 1000, img: "https://img.icons8.com/color/96/smartphone.png" },
+      { name: "Laptop 💻", price: 2000, img: "https://img.icons8.com/color/96/laptop.png" },
+      { name: "Car 🚗", price: 30000, img: "https://img.icons8.com/color/96/car.png" },
+      { name: "Motorcycle 🏍️", price: 15000, img: "https://img.icons8.com/color/96/motorcycle.png" },
+      { name: "Mansion 🏠", price: 10000000, img: "https://img.icons8.com/color/96/cottage.png" },
+      { name: "Private Jet ✈️", price: 50000000, img: "https://img.icons8.com/color/96/private-plane.png" },
+      { name: "Yacht 🚢", price: 100000000, img: "https://img.icons8.com/color/96/yacht.png" },
+      { name: "Island 🏝️", price: 150000000, img: "https://img.icons8.com/color/96/island-on-water.png" },
+      { name: "NBA Team 🏀", price: 300000000, img: "https://img.icons8.com/color/96/basketball.png" },
+      { name: "Space Rocket 🚀", price: 90000000, img: "https://img.icons8.com/color/96/rocket.png" },
+      { name: "NFT 🖼️", price: 1000000, img: "https://img.icons8.com/color/96/blockchain-technology.png" },
+      { name: "Twitter 🐦", price: 44000000000, img: "https://img.icons8.com/color/96/twitter.png" },
+    ];
+
+    items.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <p><strong>${item.name}</strong></p>
+        <p>$${item.price.toLocaleString()}</p>
+        <button onclick="buy(${index})">Buy</button>
+        <p class="count" id="count-${index}">Bought: 0</p>
+      `;
+      itemsContainer.appendChild(div);
+    });
+
+    const counts = Array(items.length).fill(0);
+
+    function buy(index) {
+      if (money >= items[index].price) {
+        money -= items[index].price;
+        counts[index]++;
+        document.getElementById(`count-${index}`).textContent = `Bought: ${counts[index]}`;
+        moneyDisplay.textContent = "$" + money.toLocaleString();
+      } else {
+        alert("Not enough money!");
+      }
+    }
+  </script>
+
+</body>
+</html>
